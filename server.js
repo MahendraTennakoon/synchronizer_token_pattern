@@ -1,6 +1,7 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const uuidv1 = require('uuid/v1');
+const uuidv4 = require('uuid/v4');
 const app = express();
 const port = 3000;
 var cookieParser = require('cookie-parser');
@@ -21,7 +22,7 @@ app.post('/login', (req, res) => {
 
         // Generating Session ID and Token
         const SESSION_ID = uuidv1();
-        const CSRF_TOKEN = uuidv1();
+        const CSRF_TOKEN = uuidv4();
 
         SESSIONS[SESSION_ID] = CSRF_TOKEN;
 
