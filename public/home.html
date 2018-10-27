@@ -7,6 +7,34 @@
     <title>Home</title>
 </head>
 <body>
-    <h1>Login Successful</h1>
+    <form action="/carDetailsQuery" id="carDetailsForm" method="POST">
+        <h2>Enter car details</h2>
+
+        Brand: 
+        <input type="text" name="brad" id="txtBrand" />
+        Model: 
+        <input type="text" name="model" id="txtModel" />
+
+        <input type="submit" value="Submit" />
+    </form>
+
+    <script>
+        var xhttp = new XMLHttpRequest();
+        xhttp.onreadystatechange = function() {
+            if (this.readyState == 4 && this.status == 200) {
+                var token = JSON.parse(this.responseText).token;
+
+                var csrf_field = document.createElement("input");
+                csrf_field.setAttribute("type", "text");
+                csrf_field.setAttribute("name", "csrf_field");
+                csrf_field.setAttribute("id", "csrf_field");
+                csrf_field.setAttribute("value", token);
+                csrf_field.setAttribute("hidden", true);
+                document.getElementById("carDetailsForm").append(csrf_field);
+            }
+        };
+        xhttp.open("POST", "/tokens", true);
+        xhttp.send();
+    </script>
 </body>
 </html>
