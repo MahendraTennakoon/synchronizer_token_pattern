@@ -47,4 +47,16 @@ app.post('/tokens', (req, res) => {
     }
 })
 
+app.post('/carDetailsQuery', (req, res) => {
+    const sessionID = req.cookies['session-id'];
+
+    console.log(req.body.csrf_field)
+
+    if(SESSIONS[sessionID] === req.body.csrf_field) {
+        res.sendfile('/public/success.html', {root: __dirname})
+    } else {
+        res.sendfile('/public/failure.html', {root: __dirname})
+    }
+})
+
 app.listen(port, () => console.log(`Server running on port: ${port}`));
