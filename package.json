@@ -18,6 +18,8 @@
   "homepage": "https://github.com/MahendraTennakoon/synchronizer_token_pattern#readme",
   "dependencies": {
     "body-parser": "^1.18.3",
-    "express": "^4.16.4"
+    "cookie-parser": "^1.4.3",
+    "express": "^4.16.4",
+    "uuid": "^3.3.2"
   }
 }
